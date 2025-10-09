@@ -113,8 +113,38 @@ h3 {
 }
 
 p {
-    font-size: 12px;
-    margin-bottom: 16px;
+    font-family: 'Arial', sans-serif;
+    font-size: 18px; /* Changed to 20px as requested */
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px; /* Consistent spacing below paragraphs */
+    text-align: left; /* Default text alignment for paragraphs */
+}
+
+/* Ensure specific project titles also use 20px */
+.project-title p {
+    font-size: 20px; /* Changed to 20px for consistency */
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Ensure detail cards also use 20px */
+.detail-card p {
+    font-size: 20px; /* Changed to 20px for consistency */
+    color: #666;
+    margin-bottom: 0;
+}
+
+/* Remove font-size from .text p and .stat p to rely on global p rule */
+.text p {
+    margin: 5px 0 0;
+    line-height: 1.4;
+}
+
+.stat p {
+    margin-top: 10px;
+    /* font-size: 20px; - Removed to rely on global p rule */
 }
 
 /* NEWS Section */
@@ -235,6 +265,12 @@ p {
     aspect-ratio: 1;
     margin-bottom: 8px;
     overflow: hidden;
+}
+
+.work-image-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
 .work-image img {
@@ -863,6 +899,134 @@ h3, .goal-card h3, .about-text h2, .style-guide-section h3 {
     margin-top: 10px;
 }
 
+.project-page-image-top-left {
+    width: 200px; /* Adjust size as needed */
+    height: auto;
+    flex-shrink: 0;
+    margin-right: 20px; /* Space between image and text */
+    margin-left: 100px;
+}
+
+.image-and-text-container {
+    display: flex;
+    align-items: flex-start; /* Align items to the top to control vertical spacing with margin-top */
+    margin-bottom: 30px; /* Space below the container */
+}
+
+.image-and-text-container > div {
+    margin-top: 250px; /* Adjust this value to move text down */
+    margin-left:120px; /* Adjust this value to move text more to the right */
+}
+
+.project-main-heading {
+    font-family: 'Arial', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.project-sub-heading {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px; /* Space between subheading and next section */
+}
+
+h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.0rem;
+    font-weight: 570;
+    color: #333;
+    margin-bottom: 25px; /* Consistent spacing below headings */
+    text-align: left; /* Default text alignment for headings */
+}
+
+.project-title h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.project-title p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.text p {
+    margin: 5px 0 0; /* Adjusted for tighter spacing within grid items */
+    line-height: 1.4;
+}
+
+.project-sub-heading {
+    margin-bottom: 25px; /* Adjusted spacing for the specific subheading */
+}
+
+/* Revert body style and apply to a specific class for project1.html */
+body {
+    background: #f8f6ef; /* Revert to original background */
+}
+
+.project1-gradient-background {
+    background: linear-gradient(to right, #f5e8e4, #f5f5f5);
+    min-height: 100vh; /* Ensure it covers the full height */
+}
+
+.centered-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; /* Ensure image is responsive */
+    height: auto;
+    margin-bottom: 30px; /* Space below the image */
+}
+
+.affinity-map-image {
+    max-width: 70%; /* Adjust this value to make the image smaller */
+}
+
+.onboarding-gif-style {
+    border-radius: 12px; /* Rounded corners */
+    border: 5px solid #e8e8e882; /* Light grey outline */
+    max-width: 70%; /* Keep user's max-width for the gif itself */
+}
+
+.onboarding-section > div {
+    margin-top: 0; /* Align text to the top of the image */
+    margin-left: 20px; /* Adjust left margin for text to be closer to image */
+}
+
+.ar-plant-section {
+    justify-content: center; /* Center the images horizontally */
+    margin-bottom: 30px; /* Add some space below the section */
+}
+
+.ar-plant-section img {
+    margin-right: 20px; /* Add some space between the two images */
+    max-width: 45%; /* Adjust width to fit two images side-by-side */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.ar-plant-second-image {
+    margin-top: 50px; /* Adjust this value to move ARplant01.gif down */
+}
+
+.study-pause-section > div {
+    margin-top: 0; /* Align text to the top of the image */
+    margin-right: 20px; /* Adjust right margin for text */
+    margin-left: 0; /* Reset left margin */
+}
+
+.study-pause-section img {
+    margin-left: 0; /* Reset left margin for image */
+    margin-right: 0; /* Reset right margin for image */
+    max-width: 45%; /* Ensure image fits */
+}
+
 .project-details {
     display: flex;
     justify-content: space-around;
@@ -991,4 +1155,95 @@ h3, .goal-card h3, .about-text h2, .style-guide-section h3 {
     border: 1px solid #EDEBD8;
 }
 
-/* No change for .play-again-button as it is not 'light green' */
+/* New styles moved from project1.html */
+body {
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, #f5e8e4, #f5f5f5);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 30px 50px; /* spacing between items */
+    margin-bottom: 40px; /* Added spacing below the grid */
+}
+
+.item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.number {
+    background: rgb(44, 44, 44);
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.text h3 {
+    margin: 0;
+    color: inherit;
+}
+
+.text p {
+    margin: 5px 0 0;
+    line-height: 1.4;
+}
+body {
+    font-family: "Inter", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #000;
+  }
+  
+  .interview-section {
+    text-align: center;
+    padding: 60px 20px;
+  }
+  
+  .interview-section h1 {
+    font-weight: inherit;
+    margin-bottom: 50px;
+}
+  
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    width: 180px;        /* increased width to accommodate longer text */
+    text-align: center; /* Center content horizontally within the stat block */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensures content (h1, p) are centered */
+}
+
+.stat h1 {
+    font-size: 72px; /* Made a little smaller */
+    margin: 0;
+    font-weight: 700; /* Made bold */
+    color: inherit;
+}
+
+.stat p {
+    margin-top: 10px;
+    font-size: 20px;
+    text-align: center; /* Ensure paragraph text itself is centered */
+}
+
+.wireframes-image {
+    max-width: 80%; /* Adjust this value to make the image smaller */
+}
+  
