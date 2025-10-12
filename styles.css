@@ -832,7 +832,7 @@ h3, .goal-card h3, .about-text h2, .style-guide-section h3 {
     padding: 60px 24px;
     max-width: 1024px;
     margin: 0 auto;
-    background-color: white; /* Ensure background is white as per image */
+    background-color: transparent; /* Changed to transparent */
 }
 
 .project-header {
@@ -1026,6 +1026,53 @@ body {
     margin-right: 0; /* Reset right margin for image */
     max-width: 45%; /* Ensure image fits */
 }
+
+/* Styles for the new Takko Taco section in project2.html */
+.main-project-heading {
+    font-size: 60px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.main-project-subheading {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #666;
+}
+
+.context-of-use-image {
+    max-width: 90%; /* Adjust to ensure the whole image is shown */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 40px; /* Add some space below the image */
+}
+
+.framed-section {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 0 auto 40px auto;
+    max-width: 800px;
+    background-color: transparent; /* Changed to transparent */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Use flexbox to center image within the frame */
+    justify-content: center;
+    align-items: center;
+}
+
+.framed-section-image {
+    max-width: 100%;
+    height: 100%; /* Make image fill the height of the frame */
+    object-fit: cover; /* Crop to fit while maintaining aspect ratio */
+    display: block;
+    border-radius: 12px; /* Match parent border-radius */
+}
+
+/* Removed styles for .about-button, .about-content, .profile-card, etc. */
 
 .project-details {
     display: flex;
