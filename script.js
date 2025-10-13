@@ -132,6 +132,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Listen for hash changes (e.g., when user uses browser back/forward buttons)
     window.addEventListener('hashchange', handleInitialSection);
 
+    // Add a fallback for window.onload to ensure hash is processed after all content is loaded
+    window.onload = function() {
+        handleInitialSection();
+    };
+
     // Add hover effects for work items
     const workItems = document.querySelectorAll('.work-item, .brand-item, .digital-item');
     workItems.forEach(item => {
