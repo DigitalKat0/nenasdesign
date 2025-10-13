@@ -72,35 +72,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }); */
-   navItems.forEach(item => {
-    item.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        const isHashLink = href && href.startsWith('#');
-        const isIndexPage =
-            window.location.pathname.endsWith('index.html') ||
-            window.location.pathname === '/' ||
-            window.location.pathname === '/index.html';
-
-        // ✅ Let the browser scroll naturally for same-page links
-        if (isHashLink && isIndexPage) {
-            const sectionName = this.getAttribute('data-section');
-            console.log(`Normal scroll to section: ${sectionName}`);
-
-            // Show section (if you still want the .active logic)
-            showSection(sectionName);
-
-            // Smooth scroll into view
-            const target = document.getElementById(sectionName);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
+    navItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            const isHashLink = href && href.startsWith('#');
+            const isIndexPage =
+                window.location.pathname.endsWith('index.html') ||
+                window.location.pathname === '/' ||
+                window.location.pathname === '/index.html';
+    
+            if (isHashLink && isIndexPage) {
+                // You're on index.html and clicked a section link like #ABOUT
+                e.preventDefault();
+                const sectionName = this.getAttribute('data-section');
+                console.log(`SPA nav on index.html. Section: ${sectionName}`);
+                history.pushState(null, '', `#${sectionName}`);
+                showSection(sectionName);
+            } else {
+                // Link goes to another page (like index.html#ABOUT), allow normal navigation
+                console.log(`Navigating to: ${href}`);
             }
-            // 🔸 No e.preventDefault(), so browser can still update URL hash
-        } else {
-            // Allow normal navigation for other pages
-            console.log(`Navigating to: ${href}`);
-        }
+        });
     });
-});
     // Handle form submission (removed as Contact section is replaced by CV)
     /*
     const contactForm = document.querySelector('.contact-form form');
