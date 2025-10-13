@@ -5,6 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showSection(sectionName) {
         console.log(`Attempting to show section: ${sectionName}`);
+        // If no sections are found, exit early
+        if (!sections || sections.length === 0) {
+            console.log('No sections found on this page.');
+            return;
+        }
         // Hide all sections
         sections.forEach(section => {
             section.classList.remove('active');
@@ -51,46 +56,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Add click event listeners to navigation items
-   /* navItems.forEach(item => {
+    navItems.forEach(item => {
         item.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-    
-            // If link is same-page anchor (#something)
-            if (href && href.startsWith('#')) {
-                // Only prevent default and do SPA navigation IF we're on index.html
-                if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' ) {
-                    e.preventDefault();
-                    const sectionName = this.getAttribute('data-section');
+
+            // Check if the link is to index.html with a hash, or a pure hash link on index.html
+            const isIndexHashLink = href && (href.startsWith('index.html#') || (href.startsWith('#') && (window.location.pathname.endsWith('index.html') || window.location.pathname === '/')));
+
+            if (isIndexHashLink) {
+                e.preventDefault();
+                // For links like 'index.html#ABOUT', navigate to it and let the loaded page's JS handle the hash
+                if (href.startsWith('index.html#')) {
+                    window.location.href = href;
+                } else {
+                    // For pure hash links on index.html (e.g., #ABOUT), handle with SPA logic
+                    const sectionName = href.substring(1);
                     console.log(`SPA nav on index.html. Section: ${sectionName}`);
                     history.pushState(null, '', `#${sectionName}`);
                     showSection(sectionName);
                 }
-                // else allow normal browser scroll behavior on other pages
             } else {
-                // Allow normal navigation for links to other pages (like index.html#ABOUT)
-                console.log(`External or other-page link: ${href}`);
-            }
-        });
-    }); */
-    navItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            const isHashLink = href && href.startsWith('#');
-            const isIndexPage =
-                window.location.pathname.endsWith('index.html') ||
-                window.location.pathname === '/' ||
-                window.location.pathname === '/index.html';
-    
-            if (isHashLink && isIndexPage) {
-                // You're on index.html and clicked a section link like #ABOUT
-                e.preventDefault();
-                const sectionName = this.getAttribute('data-section');
-                console.log(`SPA nav on index.html. Section: ${sectionName}`);
-                history.pushState(null, '', `#${sectionName}`);
-                showSection(sectionName);
-            } else {
-                // Link goes to another page (like index.html#ABOUT), allow normal navigation
-                console.log(`Navigating to: ${href}`);
+                // Allow normal navigation for other links (e.g., project pages, external links)
+                console.log(`Allowing default navigation for: ${href}`);
             }
         });
     });
