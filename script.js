@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (hash && document.getElementById(hash)) {
             showSection(hash);
         } else {
-            // Default to NEWS if no valid hash or section found
+            // Default to ABOUT if no valid hash or section found, or if it's the root path without a hash.
             console.log('No valid hash detected or section not found. Defaulting to ABOUT.');
             showSection('ABOUT');
         }
