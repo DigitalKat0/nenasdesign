@@ -53,11 +53,15 @@ body {
     margin-bottom: 8px;
     text-decoration: underline;
     transition: text-decoration 0.2s ease;
+    color: black; /* Add this */
+    text-decoration: none; /* Add this to remove underline */
 }
 
 .nav-item:hover {
-    text-decoration: none;
-}
+    font-weight: bold;
+    text-decoration: none; /* optional */
+    color: black; /* optional, keeps it from changing color */
+  }
 
 .nav-item.active {
     font-weight: 500;
