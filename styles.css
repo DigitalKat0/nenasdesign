@@ -396,7 +396,7 @@ p {
 }
 
 .about-page-gif {
-    max-width: 400px; /* Increased from 400px to 500px */
+    max-width: 550px; /* Increased from 400px to 500px */
     height: auto;
     border-radius: 8px;
     box-shadow: none;
